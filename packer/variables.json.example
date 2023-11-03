@@ -1,0 +1,6 @@
+{
+    "service_account_key_file": "/Users/denis/education/key.json",
+    "folder_id": "b1gv9j37ohf5rfjfjeli",
+    "source_image_family": "ubuntu-1604-lts",
+    "subnet_id": "e9b78ge66okdkn2hco7s"
+}
