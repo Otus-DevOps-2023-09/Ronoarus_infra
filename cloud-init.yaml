@@ -1,0 +1,29 @@
+#cloud-config
+users:
+  - name: yc-user
+    groups: sudo
+    shell: /bin/bash
+    sudo: "ALL=(ALL) NOPASSWD:ALL"
+    ssh-authorized-keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC59TGHDafClMJpTAkWwrY6gAGlre40jujhjjbFPeBpgIryKQmCpziqhK8JbK02LtULcIfCvKxep/APHQiT0bm8OaCJIyYkw92qLJp5+7lnlHn24vriNpny21aF6G3/+7tDAe4A1xyuHGHcTuSjS9twwtXvGilHt8Hfg0OskAYdDoIC0fNIJTqtfMp8YCcDd+Zwjs5O7h/gf4dVV07/jXocSRkaDjbUCyWXbSBceXBC7ZTDLl1x7S6mZermrTfihQi5SDu+nQ5S8OpVcT06Vvur6+i+4RdjFV3NZGGCzFdOHeU6k9cQj/HuRI85jp78y5QmbsV+BcPsmAmCTmsSAMTECDN5AM7P/FEOT6W/dEFsyJYVhePkRV1AFR3JnCH1uG1QEqQvYDqJszGzy8WNp08S6rrtiQUis91yHKekG7ufPOMeXOJVH0MEdF9WHw5mgJ/LSmEOd0xWid23WI7s8S/xoLtKRf0NSuDMb3URQGPSZf3m0yq7brcj+v4DbWPJf6c= denis@MBP-Denis"
+write_files:
+  - path: /home/yc-user/startup.sh
+    permisson: "0755"
+    content: |
+      #!/bin/bash
+       echo "### RUN starup.sh" && \
+       sudo apt update && \
+       sudo apt install -y ruby-full ruby-bundler build-essential && \
+       sudo apt update && \
+       sudo apt install mongodb -y && \
+       systemctl status mongodb && \
+       sudo systemctl start mongodb && \
+       sudo systemctl enable mongodb && \
+       sudo apt install git -y && \
+       cd /home/yc-user  && \
+       git clone -b monolith https://github.com/express42/reddit.git && \
+       cd /home/yc-user/reddit && bundle install && \
+       puma -d && \
+       echo "### END starup.sh"
+runcmd:
+  - bash /home/yc-user/startup.sh
