@@ -1,0 +1,8 @@
+service_account_key_file = "~/education/key.json"
+cloud_id                 = "b1gelvl0vso08969nml2"
+folder_id                = "b1gv9j37ohf5rfjfjeli"
+zone                     = "ru-central1-a"
+image_id                 = "fd8h0gjl3bo9duef13ea"
+subnet_id                = "e9b78ge66okdkn2hco7s"
+public_key_path          = "~/.ssh/id_ed25519.pub"
+private_key_path         = "~/.ssh/id_ed25519"
