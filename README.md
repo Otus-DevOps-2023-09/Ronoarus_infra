@@ -64,3 +64,10 @@ yc compute instance create \
   --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
   --metadata serial-port-enable=1 \
   --metadata-from-file='user-data=cloud-init.yaml'
+
+## branch packer-base (5 ДЗ)
+Познакомился с packer \
+Создал сервисный акк \
+Настроил конфигурационный фаил и создал образ \
+Создал ВМ из образа, все работает \
+Настроил variables \
