@@ -39,3 +39,10 @@ variable "environment" {
   description = "Environment for name"
   default     = "stage"
 }
+
+variable "access_key" {
+  description = "access_key"
+}
+variable "secret_key" {
+  description = "secret_key"
+}
